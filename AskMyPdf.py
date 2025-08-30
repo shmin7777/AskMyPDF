@@ -46,6 +46,8 @@ rag_chain = None
 
 
 def load_pdf(file):
+    if file is None:
+        return "⚠️ 먼저 PDF 파일을 업로드하세요!"
     global db, retriever, rag_chain
 
     loader = PyPDFLoader(file.name)
@@ -66,7 +68,7 @@ def load_pdf(file):
 
 def answer_question(question):
     if rag_chain is None:
-        return "먼저 PDF 파일을 업로드하세요!"
+        return "⚠️ 먼저 PDF 파일을 업로드하세요!"
     return rag_chain.invoke(question)
 
 
