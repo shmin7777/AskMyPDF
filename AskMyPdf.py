@@ -8,7 +8,7 @@ from langchain_text_splitters import CharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_core.runnables import RunnablePassthrough
 
 load_dotenv()
@@ -19,7 +19,7 @@ llm = ChatOpenAI(model="gpt-4o-mini")
 text_splitter = CharacterTextSplitter(chunk_size=10000, chunk_overlap=100)
 
 # 임베딩 모델
-hf_embeddings = HuggingFaceEmbeddings(model_name="BM-K/KoSimCSE-roberta")
+hf_embeddings = HuggingFaceEmbeddings(model_name="klue/bert-base")
 
 # 프롬프트 템플릿
 message = """
